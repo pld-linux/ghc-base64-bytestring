@@ -6,13 +6,13 @@
 Summary:	Fast base64 encoding and decoding for ByteStrings
 Summary(pl.UTF-8):	Szybkie kodowanie i dekodowanie base64 wartości ByteString
 Name:		ghc-%{pkgname}
-Version:	1.0.0.1
+Version:	1.1.0.0
 Release:	1
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/base64-bytestring
 Source0:	http://hackage.haskell.org/package/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	bfe70cca4c75f09f02a8299e19421afc
+# Source0-md5:	f6a31309fd7891e65d1bc366405b4d8d
 URL:		http://hackage.haskell.org/package/base64-bytestring
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-base >= 4
@@ -114,23 +114,27 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE README.markdown
+%doc CHANGELOG.md LICENSE README.md
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/HSbase64-bytestring-%{version}.o
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}.a
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*.so
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*.a
+%exclude %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*_p.a
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/*.dyn_hi
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/URL
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/URL/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/URL/*.dyn_hi
 
 %if %{with prof}
 %files prof
 %defattr(644,root,root,755)
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}_p.a
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*_p.a
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/*.p_hi
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data/ByteString/Base64/URL/*.p_hi
