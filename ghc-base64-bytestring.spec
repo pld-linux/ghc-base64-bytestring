@@ -7,7 +7,7 @@ Summary:	Fast base64 encoding and decoding for ByteStrings
 Summary(pl.UTF-8):	Szybkie kodowanie i dekodowanie base64 wartości ByteString
 Name:		ghc-%{pkgname}
 Version:	1.1.0.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/base64-bytestring
