@@ -18,6 +18,7 @@ BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-base >= 4
 BuildRequires:	ghc-base < 5
 BuildRequires:	ghc-bytestring >= 0.9.0
+BuildRequires:	ghc-bytestring < 0.11
 %if %{with prof}
 BuildRequires:	ghc-prof >= 6.12.3
 BuildRequires:	ghc-base-prof >= 4
@@ -87,6 +88,7 @@ runhaskell Setup.hs configure -v2 \
 	--docdir=%{_docdir}/%{name}-%{version}
 
 runhaskell Setup.hs build
+
 runhaskell Setup.hs haddock --executables
 
 %install
@@ -117,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGELOG.md LICENSE README.md
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*.so
+%attr(755,root,root) %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*.so
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*.a
 %exclude %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/libHSbase64-bytestring-%{version}-*_p.a
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Data
